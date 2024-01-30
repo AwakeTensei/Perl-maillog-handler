@@ -1,0 +1,27 @@
+DataBase MySQL Create:
+
+CREATE TABLE `log` (
+	`created` TIMESTAMP NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	`int_id` CHAR(16) NOT NULL COLLATE 'cp1251_general_ci',
+	`str` VARCHAR(255) NULL DEFAULT NULL COLLATE 'cp1251_general_ci',
+	`address` VARCHAR(255) NULL DEFAULT NULL COLLATE 'cp1251_general_ci',
+	INDEX `log_address_idx` (`address`) USING BTREE
+)
+COLLATE = 'cp1251_general_ci'
+ENGINE = InnoDB
+;
+
+
+CREATE TABLE `message` (
+	`created` TIMESTAMP NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	`id` VARCHAR(255) NOT NULL COLLATE 'cp1251_general_ci',
+	`int_id` CHAR(16) NOT NULL COLLATE 'cp1251_general_ci',
+	`str` VARCHAR(255) NULL DEFAULT NULL COLLATE 'cp1251_general_ci',
+	`status` TINYINT(4) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`) USING BTREE,
+	INDEX `message_created_idx` (`created`) USING BTREE,
+	INDEX `message_int_id_idx` (`created`) USING BTREE,	
+)
+COLLATE = 'cp1251_general_ci'
+ENGINE = InnoDB
+;
